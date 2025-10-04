@@ -28,12 +28,12 @@ class Test_necklaces(unittest.TestCase):
 
         #running a few samples of the fast ones, if these are good I presume the high ones are too
         self.assertEqual(necklaces.generate_unique_combinations(3),
-                        necklaces.generate_unique_necklaces(3))
+                        necklaces.generate_unique_binaries_ernesti(3))
         self.assertEqual(necklaces.generate_unique_combinations(4),
-                         necklaces.generate_unique_necklaces(4))
+                         necklaces.generate_unique_binaries_ernesti(4))
         self.assertEqual(necklaces.generate_unique_combinations(5),
-                         necklaces.generate_unique_necklaces(5))
+                         necklaces.generate_unique_binaries_ernesti(5))
         self.assertEqual(necklaces.generate_unique_combinations(6),
-                         necklaces.generate_unique_necklaces(6))
+                         necklaces.generate_unique_binaries_ernesti(6))
 if __name__ == "__main__":
     unittest.main()

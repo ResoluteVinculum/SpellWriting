@@ -80,22 +80,32 @@ def tau_fn(binary_list):
     binary_list[-1] = abs(binary_list[-1] -1)
     return(binary_list)
 
-def check_necklace(current_output,candidate):
+def check_necklace(current_output,candidate,already_checked):
+    if candidate[-1] == 0:
+        return(False)
     for l in range(len(candidate)):
         if cycle_list(candidate,l) in current_output:
             return(False)
     else:
         return(True)
 
-def check_children(bn,current_output,pbar):
-    if check_necklace(bn,current_output):
-        for n in range(1,len(bn) -1):
+def check_children(bn,current_output,already_checked,pbar,depth = 0):
+    if check_necklace(bn,current_output,already_checked):
+        for n in range(1,len(bn)-1):
+           
             child = tau_fn(cycle_list(bn,n))
-            if check_necklace(current_output,child):
+            if check_necklace(current_output,child,already_checked):
                 pbar.update(1)
+                #print("".join(["\t"]*depth),f"Child {n}: ",child,"Necklace: True")
                 current_output.append(child)
-                current_output = check_children(child,current_output,pbar)
-    return(current_output)
+                #already_checked.append(child)
+                
+                current_output,already_checked = check_children(child,current_output,already_checked,pbar,depth = depth + 1)
+            else:
+                #print("".join(["\t"]*depth),f"Child {n}: ",child,"Necklace: False")
+                #already_checked.append(child)
+                break
+    return(current_output,already_checked)
 
 def bin_to_int(all_binaries):
     binary_strings = ["0b" + "".join([str(ab_) for ab_ in ab]) for ab in all_binaries]
@@ -113,7 +123,7 @@ def order_binary(final_output):
     value_list = bin_to_int(final_output)
     final_output = [bn for _, bn in sorted(zip(value_list,final_output))]
     return(final_output)
-def generate_unique_necklaces(n,tqdm_disable = True,tqdm_total = 632):
+def generate_unique_necklaces(n,tqdm_disable = True,tqdm_total = 7):
 
     #assumme tqdm total, need to write code that can calculate this from n
 
@@ -128,23 +138,69 @@ def generate_unique_necklaces(n,tqdm_disable = True,tqdm_total = 632):
     final_output.append(zero_n) #cause this is a given
     
     with tqdm(total = tqdm_total,disable = tqdm_disable) as pbar:
-        final_output = check_children(zero_n,final_output,pbar = pbar)
+        final_output,_ = check_children(zero_n,final_output,final_output,pbar = pbar)
         #this step not strictly necessary but it helps with keeping things standard
         final_output = [standardise_binary(b) for b in final_output]
         final_output = order_binary(final_output)
     return(final_output)
 
+#A MUCH better solution
+
+# turns out the "new" method is slow as hell, might be my own code problem
+# but Ernesti from the Theory of Magic server has this much nicer method I'll just
+# copy. 
+
+# The idea is to generate all possible binaries for the given bit length then check if
+# that is the minimum value of that necklace. If so we pass it, if not then we don't
+
+def split_ernesti(all_binaries):
+    final_output = [[int(b) for b in list(ab)] for ab in all_binaries]
+    return(final_output)
+
+def generate_unique_binaries_ernesti(n = 13):
+
+    #stolen from https://github.com/Ernesti04/necklace_projects/blob/main/necklace_gen_v2.py
+    x = 1						# start at 1, avoid all 0s case
+    uniques = ["".join(["0"]*n)]
+    while (x < 2**n): 			# for each possible number
+        s = str(bin(x)[2:].zfill(n)) 	# get binary of number
+        cycle = [] 				# get blank list to check rotations
+        for i in range(len(s)-1): 	# for each bit in the sequence
+            #rot = cycle[i][-1] + cycle[i][:-1] #slightly slower
+            rot = s[i:] + s[:i] 		# rotate by i bits
+            cycle.append(rot) 		# add each rotation
+            if rot < s : 				# if rotation found that is smaller
+                break 				# stop searching
+        if min(cycle) == s : 		# if the number is already minimum
+            uniques.append(s) 		# add to the list
+            #print(f'\t{s}') # print results (slow)
+        x += 2 					# count odds, halves time
+    uniques = split_ernesti(uniques)
+    return(uniques)
+
+def default_generation(n = 13):
+    return(generate_unique_binaries_ernesti(n))
 
 if __name__ == "__main__":
     import timeit
     
-    t_start = timeit.default_timer()
-    new_N = generate_unique_necklaces(13,tqdm_disable=False)
-    t_end = timeit.default_timer()
-    print(f"New Method: {(t_end - t_start):.1f}s | n_uniques = {len(new_N)}")
+    # t_start = timeit.default_timer()
+    # new_N = generate_unique_necklaces(10,tqdm_disable=False)
+    # t_end = timeit.default_timer()
+    # print(f"New Method: {(t_end - t_start):.1g}s | n_uniques = {len(new_N)}")
 
-    t_start = timeit.default_timer()
-    old_N = generate_unique_combinations(13,tqdm_disable=False)
-    t_end = timeit.default_timer()
-    print(f"Old Method: {(t_end - t_start):.1f}s | n_uniques = {len(old_N)}")
+    # t_start = timeit.default_timer()
+    # old_N = generate_unique_combinations(10,tqdm_disable=False)
+    # t_end = timeit.default_timer()
+    # print(f"Old Method: {(t_end - t_start):.1g}s | n_uniques = {len(old_N)}")
+
     
+
+
+    # The result is that the ernesti method works best and so we will use that. It is based off the 
+    # Lyndon word algorithm if you're curious for futher reading
+    N = 13
+    t_start = timeit.default_timer()
+    old_N = generate_unique_binaries_ernesti(N)
+    t_end = timeit.default_timer()
+    print(f"Ernesti Method, Generating for {N}-length binaries: {(t_end - t_start):.3g}s | n_uniques = {len(old_N)}")
