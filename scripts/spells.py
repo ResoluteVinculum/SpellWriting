@@ -7,7 +7,7 @@ from collections.abc import Callable
 from necklaces import default_generation
 import os
 import bases
-
+import line_shapes
 class custom_spell_input():
     """Class for custom inputting of spell data. Usually use the argparse object but this lets you do it in a code way
     """
@@ -42,15 +42,18 @@ class custom_spell_input():
         self.ritual = ritual
 
 class spell():
-    def __init__(self,input_obj: custom_spell_input,base_fn:Callable,
+    def __init__(self,input_obj: custom_spell_input,base_fn:Callable=bases.polygon,
+                 line_fn:Callable = line_shapes.straight,
                  txt_file_base:str = r"./attribute_ordering/",
                  n_att = None,
                  n_pol = None,
                  spell_name = "spell_class_default",
                  override_dict = {},
-                 base_kwargs = []):
+                 base_kwargs = [],
+                 line_kwargs = [],
+                 ignore_atts = False):
         self.__name__ = spell_name
-
+        self.ignore_atts = ignore_atts
         self.atts = ["level","school","damagetype",
                      "aoe","range","duration",
                      "concentration","ritual"]
@@ -67,15 +70,19 @@ class spell():
                          self.concentration,self.ritual]
         
         self.base_fn = base_fn
+        self.base_kwargs = base_kwargs
+        self.line_fn = line_fn
+        self.line_kwargs = line_kwargs
+        if not self.ignore_atts:
+            #skip this if ignoring_atts since we won't need it
+            self.init_txt_files(txt_file_base)
 
-        self.init_txt_files(txt_file_base)
-
-        if n_att is None:
-            self.n_att = len(self.txt_files)
-        if n_pol is None:
-            self.n_pol = 2*self.n_att + 1
-        for i in range(len(self.txt_files)):
-            assert os.path.isfile(self.txt_files[i]), f"Could not find file {self.txt_files[i]}"
+            if n_att is None:
+                self.n_att = len(self.txt_files)
+            if n_pol is None:
+                self.n_pol = 2*self.n_att + 1
+            for i in range(len(self.txt_files)):
+                assert os.path.isfile(self.txt_files[i]), f"Could not find file {self.txt_files[i]}"
         self.get_binary_values(override_dict)
 
     def init_txt_files(self,txt_file_base):
@@ -120,12 +127,95 @@ class spell():
         self.range_b = binary_values[4]
         self.duration_b = binary_values[5]
 
-    def draw():
-        pass
+    def draw(self,annotate = False,
+             show_all_paths = False,
+             savename = "output.png",
+             output_dpi = 200,
+             axs = None,
+             dot_color = 'k',
+             cmap = 'magma',
+             line_color = 'darkred',
+             dot_size = 50,
+             legend_fontsize = 10,
+             legend_anchor = (1,0.75)):
+        assert self.n_pol == self.binary_array.shape[1]
+        assert self.n_att == self.binary_array.shape[0]
+        cmap = plt.get_cmap(cmap)
+        x_vals,y_vals = self.base_fn(self.n_pol,*self.base_kwargs)
 
+        if axs is None:
+            fig,axs = plt.subplots(1,1)
+        else:
+            fig = plt.gcf()
+        axs.set_aspect('equal')
+        
+        #draw the points
+        axs.scatter(x_vals[0],y_vals[0],color = dot_color,marker = "o",s = dot_size)
+        axs.scatter(x_vals[1:],y_vals[1:],color = dot_color,marker = "o",s = dot_size,facecolors = 'none')
+
+        if show_all_paths:
+            self.draw_all_paths(x_vals,y_vals,axs)
+
+        for i in range(self.n_att):
+            k = i + 1
+            if annotate:
+                color = cmap(0.9*i/(self.n_att))
+            else:
+                color = line_color
+            labelled = False
+            for j,elem in enumerate(self.binary_array[i]):
+                
+                if elem == 1:
+                    #if element is 1
+                    P = [x_vals[j],y_vals[j]]
+                    Q = [x_vals[(j+k)%self.n_pol],y_vals[(j+k)%self.n_pol]]
+                    line_x,line_y = self.line_fn(P,Q,*self.line_kwargs)
+                    
+                    axs.plot(line_x,line_y,
+                             ls = "-",
+                             lw = 2,
+                             color = color,
+                             label = self.att_strs[i] if (labelled is False) and annotate == True else None,
+                             zorder = 0)
+                    labelled = True
+        if self.concentration:
+            axs.plot(0,0,"",markersize = 10,marker = ".",color = dot_color)
+        if self.ritual:
+            axs.plot(0,0,"",markersize = 20,marker = "o",color=dot_color,mfc='none',linewidth = 20)
+        if annotate:
+            axs.legend(fontsize = legend_fontsize,bbox_to_anchor = legend_anchor)
+        #save_figure
+        axs.set_axis_off()
+        if savename is not None:
+            plt.savefig(savename,dpi = output_dpi,bbox_inches = 'tight')
+        else:
+            plt.show()
+
+
+
+
+
+    def draw_all_paths(self,x_vals,y_vals,axs,
+                       all_ls = "--",all_c = 'k',all_alpha = 0.7,all_lw = 0.5):
+        #loop for all k
+        for k in range(1,self.n_att+1):
+            for i in range(self.n_pol):
+                P = [x_vals[i],y_vals[i]]
+                Q = [x_vals[(i+k)%self.n_pol],y_vals[(i+k)%self.n_pol]]
+                line_x,line_y = self.line_fn(P,Q,*self.line_kwargs)
+                axs.plot(line_x,line_y,
+                         ls = all_ls,
+                         color = all_c,
+                         alpha = all_alpha,
+                         lw = all_lw)
 if __name__ == "__main__":
     test_inp = custom_spell_input(3,"evocation",
                                   "fire","sphere (20)",
                                   "150 feet","Instantaneous")
-    test_obj = spell(test_inp,bases.circle)
-    print(test_obj.binary_array)
+    test_obj = spell(test_inp,
+                     bases.polygon,
+                     base_kwargs = [],
+                     line_fn = line_shapes.straight,
+                     line_kwargs = [])
+    test_obj.draw(savename = None,show_all_paths=True,annotate=False)
+    
