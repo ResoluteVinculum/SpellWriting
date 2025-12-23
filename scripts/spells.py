@@ -40,6 +40,7 @@ class custom_spell_input():
         self.duration = duration.lower()
         self.concentration = concentration
         self.ritual = ritual
+        self.spell_name = "Test"
 
 class spell():
     def __init__(self,input_obj: custom_spell_input,base_fn:Callable=bases.polygon,
@@ -47,23 +48,22 @@ class spell():
                  txt_file_base:str = r"./attribute_ordering/",
                  n_att = None,
                  n_pol = None,
-                 spell_name = "spell_class_default",
                  override_dict = {},
                  base_kwargs = [],
                  line_kwargs = [],
                  ignore_atts = False):
-        self.__name__ = spell_name
+        self.__name__ = input_obj.spell_name
         self.ignore_atts = ignore_atts
         self.atts = ["level","school","damagetype",
                      "aoe","range","duration",
                      "concentration","ritual"]
 
-        self.level = input_obj.level
-        self.school = input_obj.school
-        self.damagetype = input_obj.damagetype
-        self.aoe = input_obj.aoe
-        self.range = input_obj.range
-        self.duration = input_obj.duration
+        self.level = input_obj.level.lower()
+        self.school = input_obj.school.lower()
+        self.damagetype = input_obj.damagetype.lower()
+        self.aoe = input_obj.aoe.lower()
+        self.range = input_obj.range.lower()
+        self.duration = input_obj.duration.lower()
         self.concentration = input_obj.concentration
         self.ritual = input_obj.ritual
         self.att_strs = [self.level,self.school,self.damagetype,self.aoe,self.range,self.duration,
@@ -137,7 +137,8 @@ class spell():
              line_color = 'darkred',
              dot_size = 50,
              legend_fontsize = 10,
-             legend_anchor = (1,0.75)):
+             legend_anchor = (1,0.75),
+             show_name = False):
         assert self.n_pol == self.binary_array.shape[1]
         assert self.n_att == self.binary_array.shape[0]
         cmap = plt.get_cmap(cmap)
@@ -186,6 +187,8 @@ class spell():
             axs.legend(fontsize = legend_fontsize,bbox_to_anchor = legend_anchor)
         #save_figure
         axs.set_axis_off()
+        if show_name:
+            axs.set_title(self.__name__)
         if savename is not None:
             plt.savefig(savename,dpi = output_dpi,bbox_inches = 'tight')
         else:
@@ -216,6 +219,8 @@ if __name__ == "__main__":
                      bases.polygon,
                      base_kwargs = [],
                      line_fn = line_shapes.straight,
-                     line_kwargs = [])
-    test_obj.draw(savename = None,show_all_paths=True,annotate=False)
+                     line_kwargs = [],
+                     spell_name = "Fireball")
+    test_obj.draw(savename = None,show_all_paths=True,annotate=False,
+                  show_name=True)
     
