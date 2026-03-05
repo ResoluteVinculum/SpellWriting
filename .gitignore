@@ -1,2 +1,14 @@
+
+# Resources
 *.png
-scripts/__pycache__/
+
+
+# Project
+.spyproject/
+.venv
+dist/
+uv.lock
+
+# Python Artifacts
+*.egg-info
+__pycache__/
