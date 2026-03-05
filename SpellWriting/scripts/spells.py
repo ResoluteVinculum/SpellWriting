@@ -4,7 +4,7 @@ functions a spell might need
 import matplotlib.pyplot as plt #There's almost certainly a better way than matplotlib but oh well
 import numpy as np
 from collections.abc import Callable
-from necklaces import default_generation
+from SpellWriting.scripts.necklaces import default_generation
 import os
 import bases
 import line_shapes

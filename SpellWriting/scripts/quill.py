@@ -2,10 +2,10 @@
 on the command line and output a png as required. Also useful if it can
 return a spell class
 """
-from spells import spell
+from SpellWriting.spells import spell
 import argparse
 import line_shapes
-import bases
+import SpellWriting.bases
 
 
 if __name__=="__main__":
