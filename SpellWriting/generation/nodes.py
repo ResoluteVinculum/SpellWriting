@@ -1,5 +1,4 @@
 import numpy as np
-import math
 
 #---------File for defining spell bases----------#
 # every base must haave an input of n and return (x,y)
@@ -12,11 +11,25 @@ def polygon(n,radius = 1,start_angle = None):
     x,y = (radius * np.sin(small_angle), radius * np.cos(small_angle))
     return(x,y)
 
-def line(n):
+def line(n:int,
+         slope:float = 0.) -> tuple[np.ndarray]:
+    """
+    Creates x-y pairs for points along a line centered on the origin.
+    
+    Linear, not affine
+
+    """
     #makes a horizontal line of n-points
-    x = np.arange(0,n)
-    y = np.zeros((1,n))
-    return(x,y[0])
+    x = np.arange(-n/2+.5,n/2+.5)
+    if slope != 0 and slope != float('inf'):
+        x = x.astype(float)
+        y = float(slope)*x
+    elif slope == 0:
+        y = np.zeros((1,n)).astype(int)[0]
+    else:
+        y = x
+        x = np.zeros((1,n))[0]
+    return (x,y)
 
 def quadratic(n,a = 1,b=0,c=0):
     #Creates x,y data for a quadratic equation beginning at 0 and bouncing between positive and negative values
@@ -41,7 +54,7 @@ def circle(n,radius = 1,theta0 = 0,theta1 = -np.pi/2):
 
 def cubic(n,a = 0.1,b=0,c = -0.75,d=0):
     #Creates a base accourding to the cubic function
-    x = np.arange(-math.floor(n/2),math.ceil(n/2))
+    x = np.arange(-np.floor(n/2),np.ceil(n/2))
     y = a*x**3+b**2+c*x+d
     return(x,y)
 
@@ -54,9 +67,9 @@ def golden(n,lim = 3*np.pi):
     y = np.sin(t)*f
     return(x,y)
 
-def einstein(n):
-    if n != 13:
-        raise NotImplementedError(f"Einstein Tile has 13 points so n must be 13. You have n={n}")
+def einstein(n:int = 13):
+    
+    assert n == 13, f"Einstein Tile has 13 points so n must be 13. You have n={n}"
     
     points = np.array([[1.9,0],
               [3.8,0.9],
@@ -76,3 +89,10 @@ def einstein(n):
 
 if __name__ == "__main__":
     print("Hello Nerd!")
+    import inspect
+    import sys
+    members = inspect.getmembers(sys.modules[__name__], inspect.isfunction)[1:]
+    import matplotlib.pyplot as plt
+    for name, func in members:
+        plt.plot(*func(13), '.', label=name)
+    plt.legend()

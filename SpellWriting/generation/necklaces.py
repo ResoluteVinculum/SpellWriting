@@ -178,8 +178,13 @@ def generate_unique_binaries_ernesti(n = 13):
     uniques = split_ernesti(uniques)
     return(uniques)
 
-def default_generation(n = 13):
-    return(generate_unique_binaries_ernesti(n))
+
+def generate_binary_necklace(n:int = 13):
+    """
+    Wrapper for generate_unique_binaries_ernesti
+    
+    """
+    return generate_unique_binaries_ernesti(n)
 
 if __name__ == "__main__":
     import timeit
@@ -194,9 +199,6 @@ if __name__ == "__main__":
     old_N = generate_unique_combinations(N,tqdm_disable=False)
     t_end = timeit.default_timer()
     print(f"Old Method: {(t_end - t_start):.1g}s | n_uniques = {len(old_N)}")
-
-    
-
 
     # The result is that the ernesti method works best and so we will use that. It is based off the 
     # Lyndon word algorithm if you're curious for futher reading
