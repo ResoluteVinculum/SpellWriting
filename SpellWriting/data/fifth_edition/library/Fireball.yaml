@@ -1,0 +1,9 @@
+name: Fireball
+system: 5e
+level: 3
+school: None
+damage_type: Fire
+area_of_effect:
+- S
+range: point (150 feet)
+duration: special (Instant)

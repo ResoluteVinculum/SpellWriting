@@ -1,0 +1,9 @@
+name: Geas
+system: 5e
+level: 5
+school: Enchantment
+damage_type: Psychic
+area_of_effect:
+- ST
+range: point (60 feet)
+duration: timed (30 day)

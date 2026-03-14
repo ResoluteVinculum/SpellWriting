@@ -1,0 +1,8 @@
+name: Scrying
+system: 5e
+level: 5
+school: Divination
+damage_type: None
+area_of_effect: None
+range: point (Self)
+duration: concentration (10 minute)

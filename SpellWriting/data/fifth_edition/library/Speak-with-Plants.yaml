@@ -1,0 +1,8 @@
+name: Speak with Plants
+system: 5e
+level: 3
+school: Transmutation
+damage_type: None
+area_of_effect: None
+range: radius (30 feet)
+duration: timed (10 minute)

@@ -1,0 +1,9 @@
+name: Fear
+system: 5e
+level: 3
+school: Illusion
+damage_type: None
+area_of_effect:
+- N
+range: cone (30 feet)
+duration: concentration (1 minute)

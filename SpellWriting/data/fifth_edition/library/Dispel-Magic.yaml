@@ -1,0 +1,9 @@
+name: Dispel Magic
+system: 5e
+level: 3
+school: Abjuration
+damage_type: None
+area_of_effect:
+- ST
+range: point (120 feet)
+duration: special (Instant)

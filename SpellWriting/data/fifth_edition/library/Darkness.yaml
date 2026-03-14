@@ -1,0 +1,9 @@
+name: Darkness
+system: 5e
+level: 2
+school: None
+damage_type: None
+area_of_effect:
+- S
+range: point (60 feet)
+duration: concentration (10 minute)

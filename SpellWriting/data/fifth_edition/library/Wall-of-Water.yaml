@@ -1,0 +1,9 @@
+name: Wall of Water
+system: 5e
+level: 3
+school: None
+damage_type: None
+area_of_effect:
+- W
+range: point (60 feet)
+duration: concentration (10 minute)

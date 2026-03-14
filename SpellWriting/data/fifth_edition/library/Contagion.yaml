@@ -1,0 +1,9 @@
+name: Contagion
+system: 5e
+level: 5
+school: None
+damage_type: None
+area_of_effect:
+- ST
+range: point (Touch)
+duration: timed (7 day)

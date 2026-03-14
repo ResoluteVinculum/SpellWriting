@@ -1,0 +1,9 @@
+name: Antipathy/Sympathy
+system: 5e
+level: 8
+school: Enchantment
+damage_type: None
+area_of_effect:
+- C
+range: point (60 feet)
+duration: timed (10 day)

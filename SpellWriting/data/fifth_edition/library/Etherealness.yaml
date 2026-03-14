@@ -1,0 +1,8 @@
+name: Etherealness
+system: 5e
+level: 7
+school: Transmutation
+damage_type: Force
+area_of_effect: None
+range: point (Self)
+duration: timed (8 hour)

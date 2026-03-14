@@ -1,0 +1,11 @@
+name: Spirit Shroud
+system: 5e
+level: 3
+school: None
+damage_type:
+- Radiant
+- Necrotic
+- Cold
+area_of_effect: None
+range: point (Self)
+duration: concentration (1 minute)

@@ -1,0 +1,9 @@
+name: Hold Monster
+system: 5e
+level: 5
+school: Enchantment
+damage_type: None
+area_of_effect:
+- ST
+range: point (90 feet)
+duration: concentration (1 minute)

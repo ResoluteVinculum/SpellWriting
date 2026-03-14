@@ -1,0 +1,9 @@
+name: Color Spray
+system: 5e
+level: 1
+school: Illusion
+damage_type: None
+area_of_effect:
+- N
+range: cone (15 feet)
+duration: timed (1 round)

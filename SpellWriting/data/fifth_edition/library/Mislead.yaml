@@ -1,0 +1,8 @@
+name: Mislead
+system: 5e
+level: 5
+school: Illusion
+damage_type: None
+area_of_effect: None
+range: point (Self)
+duration: concentration (1 hour)

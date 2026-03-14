@@ -1,0 +1,8 @@
+name: Knock
+system: 5e
+level: 2
+school: Transmutation
+damage_type: None
+area_of_effect: None
+range: point (60 feet)
+duration: special (Instant)

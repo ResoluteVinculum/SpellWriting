@@ -1,0 +1,9 @@
+name: Sunbeam
+system: 5e
+level: 6
+school: None
+damage_type: Radiant
+area_of_effect:
+- L
+range: line (60 feet)
+duration: concentration (1 minute)

@@ -1,0 +1,9 @@
+name: Telekinesis
+system: 5e
+level: 5
+school: Transmutation
+damage_type: None
+area_of_effect:
+- ST
+range: point (60 feet)
+duration: concentration (10 minute)

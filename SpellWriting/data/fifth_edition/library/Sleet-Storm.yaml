@@ -1,0 +1,9 @@
+name: Sleet Storm
+system: 5e
+level: 3
+school: None
+damage_type: None
+area_of_effect:
+- Y
+range: point (150 feet)
+duration: concentration (1 minute)

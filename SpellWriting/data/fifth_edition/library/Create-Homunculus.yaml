@@ -1,0 +1,8 @@
+name: Create Homunculus
+system: 5e
+level: 6
+school: Transmutation
+damage_type: None
+area_of_effect: None
+range: point (Touch)
+duration: special (Instant)

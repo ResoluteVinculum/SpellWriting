@@ -1,0 +1,9 @@
+name: Earth Tremor
+system: 5e
+level: 1
+school: None
+damage_type: Bludgeoning
+area_of_effect:
+- R
+range: point (10 feet)
+duration: special (Instant)

@@ -1,0 +1,9 @@
+name: Antimagic Field
+system: 5e
+level: 8
+school: Abjuration
+damage_type: None
+area_of_effect:
+- S
+range: sphere (10 feet)
+duration: concentration (1 hour)

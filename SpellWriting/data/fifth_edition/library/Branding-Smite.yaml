@@ -1,0 +1,8 @@
+name: Branding Smite
+system: 5e
+level: 2
+school: None
+damage_type: Radiant
+area_of_effect: None
+range: point (Self)
+duration: concentration (1 minute)

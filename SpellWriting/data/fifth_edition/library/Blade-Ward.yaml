@@ -1,0 +1,8 @@
+name: Blade Ward
+system: 5e
+level: 0
+school: Abjuration
+damage_type: None
+area_of_effect: None
+range: point (Self)
+duration: timed (1 round)

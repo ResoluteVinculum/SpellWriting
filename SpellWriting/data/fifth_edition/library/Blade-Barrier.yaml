@@ -1,0 +1,9 @@
+name: Blade Barrier
+system: 5e
+level: 6
+school: None
+damage_type: Slashing
+area_of_effect:
+- W
+range: point (90 feet)
+duration: concentration (10 minute)

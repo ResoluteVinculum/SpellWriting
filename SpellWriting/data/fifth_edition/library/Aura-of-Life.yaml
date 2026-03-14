@@ -1,0 +1,9 @@
+name: Aura of Life
+system: 5e
+level: 4
+school: Abjuration
+damage_type: None
+area_of_effect:
+- S
+range: radius (30 feet)
+duration: concentration (10 minute)

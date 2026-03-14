@@ -1,0 +1,8 @@
+name: Teleportation Circle
+system: 5e
+level: 5
+school: None
+damage_type: None
+area_of_effect: None
+range: point (10 feet)
+duration: timed (1 round)

@@ -1,0 +1,9 @@
+name: Gust of Wind
+system: 5e
+level: 2
+school: None
+damage_type: None
+area_of_effect:
+- L
+range: line (60 feet)
+duration: concentration (1 minute)

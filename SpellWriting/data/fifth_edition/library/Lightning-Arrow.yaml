@@ -1,0 +1,9 @@
+name: Lightning Arrow
+system: 5e
+level: 3
+school: Transmutation
+damage_type: Lightning
+area_of_effect:
+- S
+range: point (Self)
+duration: concentration (1 minute)

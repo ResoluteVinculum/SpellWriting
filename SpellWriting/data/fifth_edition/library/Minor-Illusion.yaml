@@ -1,0 +1,8 @@
+name: Minor Illusion
+system: 5e
+level: 0
+school: Illusion
+damage_type: None
+area_of_effect: None
+range: point (30 feet)
+duration: timed (1 minute)

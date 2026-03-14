@@ -1,0 +1,8 @@
+name: Gate
+system: 5e
+level: 9
+school: None
+damage_type: None
+area_of_effect: None
+range: point (60 feet)
+duration: concentration (1 minute)

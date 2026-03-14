@@ -1,0 +1,9 @@
+name: Spare the Dying
+system: 5e
+level: 0
+school: None
+damage_type: None
+area_of_effect:
+- ST
+range: point (Touch)
+duration: special (Instant)

@@ -1,0 +1,9 @@
+name: Beacon of Hope
+system: 5e
+level: 3
+school: Abjuration
+damage_type: None
+area_of_effect:
+- MT
+range: point (30 feet)
+duration: concentration (1 minute)

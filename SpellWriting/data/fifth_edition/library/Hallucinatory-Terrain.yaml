@@ -1,0 +1,9 @@
+name: Hallucinatory Terrain
+system: 5e
+level: 4
+school: Illusion
+damage_type: None
+area_of_effect:
+- C
+range: point (300 feet)
+duration: timed (24 hour)

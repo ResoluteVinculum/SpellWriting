@@ -1,0 +1,9 @@
+name: Arms of Hadar
+system: 5e
+level: 1
+school: None
+damage_type: Necrotic
+area_of_effect:
+- S
+range: radius (10 feet)
+duration: special (Instant)

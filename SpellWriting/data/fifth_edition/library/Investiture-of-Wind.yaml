@@ -1,0 +1,9 @@
+name: Investiture of Wind
+system: 5e
+level: 6
+school: Transmutation
+damage_type: Bludgeoning
+area_of_effect:
+- C
+range: point (Self)
+duration: concentration (10 minute)

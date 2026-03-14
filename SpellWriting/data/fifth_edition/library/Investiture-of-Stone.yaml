@@ -1,0 +1,9 @@
+name: Investiture of Stone
+system: 5e
+level: 6
+school: Transmutation
+damage_type: None
+area_of_effect:
+- S
+range: point (Self)
+duration: concentration (10 minute)

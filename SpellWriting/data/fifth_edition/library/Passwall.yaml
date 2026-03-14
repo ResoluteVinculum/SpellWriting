@@ -1,0 +1,8 @@
+name: Passwall
+system: 5e
+level: 5
+school: Transmutation
+damage_type: None
+area_of_effect: None
+range: point (30 feet)
+duration: timed (1 hour)

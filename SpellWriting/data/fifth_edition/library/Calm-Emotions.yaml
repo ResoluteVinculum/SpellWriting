@@ -1,0 +1,9 @@
+name: Calm Emotions
+system: 5e
+level: 2
+school: Enchantment
+damage_type: None
+area_of_effect:
+- S
+range: point (60 feet)
+duration: concentration (1 minute)

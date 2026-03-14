@@ -1,0 +1,9 @@
+name: Maze
+system: 5e
+level: 8
+school: None
+damage_type: None
+area_of_effect:
+- ST
+range: point (60 feet)
+duration: concentration (10 minute)

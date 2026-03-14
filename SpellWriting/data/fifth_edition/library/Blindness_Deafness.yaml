@@ -1,0 +1,9 @@
+name: Blindness/Deafness
+system: 5e
+level: 2
+school: None
+damage_type: None
+area_of_effect:
+- ST
+range: point (30 feet)
+duration: timed (1 minute)

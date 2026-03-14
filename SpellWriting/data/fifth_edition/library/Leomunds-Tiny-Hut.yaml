@@ -1,0 +1,9 @@
+name: Leomund's Tiny Hut
+system: 5e
+level: 3
+school: None
+damage_type: None
+area_of_effect:
+- H
+range: hemisphere (10 feet)
+duration: timed (8 hour)

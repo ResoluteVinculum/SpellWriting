@@ -1,0 +1,10 @@
+name: Investiture of Ice
+system: 5e
+level: 6
+school: Transmutation
+damage_type: Cold
+area_of_effect:
+- N
+- S
+range: point (Self)
+duration: concentration (10 minute)

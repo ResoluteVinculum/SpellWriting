@@ -1,0 +1,9 @@
+name: Sleep
+system: 5e
+level: 1
+school: Enchantment
+damage_type: None
+area_of_effect:
+- S
+range: point (90 feet)
+duration: timed (1 minute)

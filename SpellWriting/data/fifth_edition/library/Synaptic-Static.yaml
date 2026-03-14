@@ -1,0 +1,9 @@
+name: Synaptic Static
+system: 5e
+level: 5
+school: Enchantment
+damage_type: Psychic
+area_of_effect:
+- S
+range: point (120 feet)
+duration: special (Instant)

@@ -1,0 +1,8 @@
+name: Sending
+system: 5e
+level: 3
+school: None
+damage_type: None
+area_of_effect: None
+range: point (Unlimited)
+duration: timed (1 round)

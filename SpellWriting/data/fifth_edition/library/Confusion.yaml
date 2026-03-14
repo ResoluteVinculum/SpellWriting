@@ -1,0 +1,9 @@
+name: Confusion
+system: 5e
+level: 4
+school: Enchantment
+damage_type: None
+area_of_effect:
+- S
+range: point (90 feet)
+duration: concentration (1 minute)

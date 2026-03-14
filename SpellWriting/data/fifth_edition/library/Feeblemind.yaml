@@ -1,0 +1,9 @@
+name: Feeblemind
+system: 5e
+level: 8
+school: Enchantment
+damage_type: Psychic
+area_of_effect:
+- ST
+range: point (150 feet)
+duration: special (Instant)

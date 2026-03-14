@@ -1,0 +1,8 @@
+name: Contingency
+system: 5e
+level: 6
+school: None
+damage_type: None
+area_of_effect: None
+range: point (Self)
+duration: timed (10 day)

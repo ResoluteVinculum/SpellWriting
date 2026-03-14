@@ -1,0 +1,9 @@
+name: Aura of Vitality
+system: 5e
+level: 3
+school: None
+damage_type: None
+area_of_effect:
+- S
+range: radius (30 feet)
+duration: concentration (1 minute)

@@ -1,0 +1,9 @@
+name: Invisibility
+system: 5e
+level: 2
+school: Illusion
+damage_type: None
+area_of_effect:
+- ST
+range: point (Touch)
+duration: concentration (1 hour)

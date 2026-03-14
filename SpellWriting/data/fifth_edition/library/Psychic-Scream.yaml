@@ -1,0 +1,9 @@
+name: Psychic Scream
+system: 5e
+level: 9
+school: Enchantment
+damage_type: Psychic
+area_of_effect:
+- MT
+range: point (90 feet)
+duration: special (Instant)

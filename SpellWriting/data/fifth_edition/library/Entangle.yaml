@@ -1,0 +1,9 @@
+name: Entangle
+system: 5e
+level: 1
+school: None
+damage_type: None
+area_of_effect:
+- Q
+range: point (90 feet)
+duration: concentration (1 minute)

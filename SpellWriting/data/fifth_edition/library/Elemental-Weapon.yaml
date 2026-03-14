@@ -1,0 +1,13 @@
+name: Elemental Weapon
+system: 5e
+level: 3
+school: Transmutation
+damage_type:
+- Acid
+- Cold
+- Fire
+- Lightning
+- Thunder
+area_of_effect: None
+range: point (Touch)
+duration: concentration (1 hour)

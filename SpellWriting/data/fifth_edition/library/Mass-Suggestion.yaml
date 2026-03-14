@@ -1,0 +1,9 @@
+name: Mass Suggestion
+system: 5e
+level: 6
+school: Enchantment
+damage_type: None
+area_of_effect:
+- MT
+range: point (60 feet)
+duration: timed (24 hour)

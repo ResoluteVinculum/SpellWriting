@@ -1,0 +1,9 @@
+name: Control Water
+system: 5e
+level: 4
+school: Transmutation
+damage_type: Bludgeoning
+area_of_effect:
+- C
+range: point (300 feet)
+duration: concentration (10 minute)

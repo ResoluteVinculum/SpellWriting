@@ -1,0 +1,8 @@
+name: Skywrite
+system: 5e
+level: 2
+school: Transmutation
+damage_type: None
+area_of_effect: None
+range: point (Sight)
+duration: concentration (1 hour)

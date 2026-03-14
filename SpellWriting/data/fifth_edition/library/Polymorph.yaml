@@ -1,0 +1,9 @@
+name: Polymorph
+system: 5e
+level: 4
+school: Transmutation
+damage_type: None
+area_of_effect:
+- ST
+range: point (60 feet)
+duration: concentration (1 hour)

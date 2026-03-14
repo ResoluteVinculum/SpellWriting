@@ -1,0 +1,9 @@
+name: Sequester
+system: 5e
+level: 7
+school: Transmutation
+damage_type: None
+area_of_effect:
+- ST
+range: point (Touch)
+duration: special (Permanent)

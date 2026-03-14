@@ -1,0 +1,9 @@
+name: Evard's Black Tentacles
+system: 5e
+level: 4
+school: None
+damage_type: Bludgeoning
+area_of_effect:
+- Q
+range: point (90 feet)
+duration: concentration (1 minute)

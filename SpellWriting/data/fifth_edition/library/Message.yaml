@@ -1,0 +1,9 @@
+name: Message
+system: 5e
+level: 0
+school: Transmutation
+damage_type: None
+area_of_effect:
+- ST
+range: point (120 feet)
+duration: timed (1 round)

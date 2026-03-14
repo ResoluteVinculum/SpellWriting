@@ -1,0 +1,9 @@
+name: Compelled Duel
+system: 5e
+level: 1
+school: Enchantment
+damage_type: None
+area_of_effect:
+- ST
+range: point (30 feet)
+duration: concentration (1 minute)

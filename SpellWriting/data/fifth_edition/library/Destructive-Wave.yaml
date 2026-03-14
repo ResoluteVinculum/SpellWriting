@@ -1,0 +1,13 @@
+name: Destructive Wave
+system: 5e
+level: 5
+school: None
+damage_type:
+- Necrotic
+- Radiant
+- Thunder
+area_of_effect:
+- MT
+- S
+range: radius (30 feet)
+duration: special (Instant)

@@ -1,0 +1,11 @@
+name: Ice Storm
+system: 5e
+level: 4
+school: None
+damage_type:
+- Bludgeoning
+- Cold
+area_of_effect:
+- Y
+range: point (300 feet)
+duration: special (Instant)

@@ -1,0 +1,14 @@
+name: Storm of Vengeance
+system: 5e
+level: 9
+school: None
+damage_type:
+- Acid
+- Bludgeoning
+- Cold
+- Lightning
+- Thunder
+area_of_effect:
+- Y
+range: point (Sight)
+duration: concentration (1 minute)

@@ -1,0 +1,10 @@
+name: Slow
+system: 5e
+level: 3
+school: Transmutation
+damage_type: None
+area_of_effect:
+- C
+- MT
+range: point (120 feet)
+duration: concentration (1 minute)

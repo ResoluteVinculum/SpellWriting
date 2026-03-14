@@ -1,0 +1,9 @@
+name: Earthquake
+system: 5e
+level: 8
+school: None
+damage_type: Bludgeoning
+area_of_effect:
+- R
+range: point (500 feet)
+duration: concentration (1 minute)

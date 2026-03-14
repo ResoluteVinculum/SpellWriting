@@ -1,0 +1,10 @@
+name: Mass Cure Wounds
+system: 5e
+level: 5
+school: None
+damage_type: None
+area_of_effect:
+- MT
+- S
+range: point (60 feet)
+duration: special (Instant)

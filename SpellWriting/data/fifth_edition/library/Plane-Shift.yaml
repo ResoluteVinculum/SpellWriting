@@ -1,0 +1,10 @@
+name: Plane Shift
+system: 5e
+level: 7
+school: None
+damage_type: None
+area_of_effect:
+- MT
+- ST
+range: point (Touch)
+duration: special (Instant)

@@ -1,0 +1,9 @@
+name: Spike Growth
+system: 5e
+level: 2
+school: Transmutation
+damage_type: Piercing
+area_of_effect:
+- R
+range: point (150 feet)
+duration: concentration (10 minute)

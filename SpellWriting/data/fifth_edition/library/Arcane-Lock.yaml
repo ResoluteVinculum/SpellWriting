@@ -1,0 +1,8 @@
+name: Arcane Lock
+system: 5e
+level: 2
+school: Abjuration
+damage_type: None
+area_of_effect: None
+range: point (Touch)
+duration: special (Permanent)

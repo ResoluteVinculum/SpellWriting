@@ -1,0 +1,14 @@
+name: Prismatic Spray
+system: 5e
+level: 7
+school: None
+damage_type:
+- Acid
+- Cold
+- Fire
+- Lightning
+- Poison
+area_of_effect:
+- N
+range: cone (60 feet)
+duration: special (Instant)

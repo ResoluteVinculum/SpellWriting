@@ -1,0 +1,8 @@
+name: Armor of Agathys
+system: 5e
+level: 1
+school: Abjuration
+damage_type: Cold
+area_of_effect: None
+range: point (Self)
+duration: timed (1 hour)

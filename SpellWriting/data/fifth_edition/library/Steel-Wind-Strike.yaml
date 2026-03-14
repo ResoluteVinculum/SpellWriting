@@ -1,0 +1,9 @@
+name: Steel Wind Strike
+system: 5e
+level: 5
+school: None
+damage_type: Force
+area_of_effect:
+- MT
+range: point (30 feet)
+duration: special (Instant)

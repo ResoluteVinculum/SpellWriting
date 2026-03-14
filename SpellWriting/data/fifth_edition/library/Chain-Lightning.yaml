@@ -1,0 +1,10 @@
+name: Chain Lightning
+system: 5e
+level: 6
+school: None
+damage_type: Lightning
+area_of_effect:
+- MT
+- ST
+range: point (150 feet)
+duration: special (Instant)

@@ -1,0 +1,9 @@
+name: Water Breathing
+system: 5e
+level: 3
+school: Transmutation
+damage_type: None
+area_of_effect:
+- MT
+range: point (30 feet)
+duration: timed (24 hour)

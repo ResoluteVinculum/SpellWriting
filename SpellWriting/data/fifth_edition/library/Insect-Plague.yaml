@@ -1,0 +1,9 @@
+name: Insect Plague
+system: 5e
+level: 5
+school: None
+damage_type: Piercing
+area_of_effect:
+- S
+range: point (300 feet)
+duration: concentration (10 minute)

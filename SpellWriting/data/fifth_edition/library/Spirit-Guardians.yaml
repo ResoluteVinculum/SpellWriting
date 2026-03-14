@@ -1,0 +1,11 @@
+name: Spirit Guardians
+system: 5e
+level: 3
+school: None
+damage_type:
+- Necrotic
+- Radiant
+area_of_effect:
+- S
+range: radius (15 feet)
+duration: concentration (10 minute)

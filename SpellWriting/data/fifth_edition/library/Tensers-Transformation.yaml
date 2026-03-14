@@ -1,0 +1,8 @@
+name: Tenser's Transformation
+system: 5e
+level: 6
+school: Transmutation
+damage_type: Force
+area_of_effect: None
+range: point (Self)
+duration: concentration (10 minute)

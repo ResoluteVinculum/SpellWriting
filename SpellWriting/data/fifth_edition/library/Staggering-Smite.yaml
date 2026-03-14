@@ -1,0 +1,8 @@
+name: Staggering Smite
+system: 5e
+level: 4
+school: None
+damage_type: Psychic
+area_of_effect: None
+range: point (Self)
+duration: concentration (1 minute)

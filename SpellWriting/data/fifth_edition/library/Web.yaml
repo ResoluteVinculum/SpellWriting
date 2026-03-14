@@ -1,0 +1,9 @@
+name: Web
+system: 5e
+level: 2
+school: None
+damage_type: Fire
+area_of_effect:
+- C
+range: point (60 feet)
+duration: concentration (1 hour)

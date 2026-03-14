@@ -1,0 +1,10 @@
+name: Wall of Light
+system: 5e
+level: 5
+school: None
+damage_type: Radiant
+area_of_effect:
+- ST
+- W
+range: point (120 feet)
+duration: concentration (10 minute)

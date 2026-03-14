@@ -1,0 +1,8 @@
+name: Glibness
+system: 5e
+level: 8
+school: Transmutation
+damage_type: None
+area_of_effect: None
+range: point (Self)
+duration: timed (1 hour)

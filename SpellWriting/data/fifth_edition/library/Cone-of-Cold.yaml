@@ -1,0 +1,9 @@
+name: Cone of Cold
+system: 5e
+level: 5
+school: None
+damage_type: Cold
+area_of_effect:
+- N
+range: cone (60 feet)
+duration: special (Instant)

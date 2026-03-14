@@ -1,0 +1,9 @@
+name: Holy Aura
+system: 5e
+level: 8
+school: Abjuration
+damage_type: None
+area_of_effect:
+- S
+range: point (Self)
+duration: concentration (1 minute)
