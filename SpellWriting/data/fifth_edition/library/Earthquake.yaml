@@ -1,7 +1,7 @@
 name: Earthquake
 system: 5e
 level: 8
-school: None
+school: Transmutation
 damage_type: Bludgeoning
 area_of_effect:
 - R

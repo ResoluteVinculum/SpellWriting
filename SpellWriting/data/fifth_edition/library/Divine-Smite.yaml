@@ -1,8 +1,8 @@
-name: Branding Smite
+name: Divine Smite
 system: 5e
-level: 2
+level: 1
 school: None
 damage_type: Radiant
 area_of_effect: None
 range: point (Self)
-duration: concentration (1 minute)
+duration: special (Instant)

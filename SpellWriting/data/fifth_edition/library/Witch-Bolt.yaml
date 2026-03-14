@@ -5,5 +5,5 @@ school: None
 damage_type: Lightning
 area_of_effect:
 - ST
-range: point (30 feet)
+range: point (60 feet)
 duration: concentration (1 minute)

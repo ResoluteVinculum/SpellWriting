@@ -5,6 +5,5 @@ school: None
 damage_type: Acid
 area_of_effect:
 - MT
-- ST
 range: point (60 feet)
 duration: special (Instant)

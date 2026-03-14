@@ -1,7 +1,7 @@
 name: Cure Wounds
 system: 5e
 level: 1
-school: None
+school: Abjuration
 damage_type: None
 area_of_effect:
 - ST

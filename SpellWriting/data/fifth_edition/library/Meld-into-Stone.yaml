@@ -2,7 +2,7 @@ name: Meld into Stone
 system: 5e
 level: 3
 school: Transmutation
-damage_type: Bludgeoning
+damage_type: Force
 area_of_effect: None
 range: point (Touch)
 duration: timed (8 hour)

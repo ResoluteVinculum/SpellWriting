@@ -1,9 +1,9 @@
 name: Power Word Heal
 system: 5e
 level: 9
-school: None
+school: Enchantment
 damage_type: None
 area_of_effect:
 - ST
-range: point (Touch)
+range: point (60 feet)
 duration: special (Instant)

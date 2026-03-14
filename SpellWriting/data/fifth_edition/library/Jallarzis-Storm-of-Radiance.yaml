@@ -1,0 +1,11 @@
+name: Jallarzi's Storm of Radiance
+system: 5e
+level: 5
+school: None
+damage_type:
+- Radiant
+- Thunder
+area_of_effect:
+- Y
+range: point (120 feet)
+duration: concentration (1 minute)

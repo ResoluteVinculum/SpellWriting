@@ -2,7 +2,7 @@ name: Shillelagh
 system: 5e
 level: 0
 school: Transmutation
-damage_type: None
+damage_type: Force
 area_of_effect: None
-range: point (Touch)
+range: point (Self)
 duration: timed (1 minute)

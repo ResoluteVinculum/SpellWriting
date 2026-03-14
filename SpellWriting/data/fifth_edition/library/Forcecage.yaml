@@ -6,4 +6,4 @@ damage_type: None
 area_of_effect:
 - C
 range: point (100 feet)
-duration: timed (1 hour)
+duration: concentration (1 hour)

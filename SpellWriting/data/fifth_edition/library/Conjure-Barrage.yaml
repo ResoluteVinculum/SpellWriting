@@ -2,7 +2,7 @@ name: Conjure Barrage
 system: 5e
 level: 3
 school: None
-damage_type: None
+damage_type: Force
 area_of_effect:
 - N
 range: cone (60 feet)

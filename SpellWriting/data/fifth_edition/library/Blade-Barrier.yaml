@@ -2,7 +2,7 @@ name: Blade Barrier
 system: 5e
 level: 6
 school: None
-damage_type: Slashing
+damage_type: Force
 area_of_effect:
 - W
 range: point (90 feet)

@@ -2,7 +2,7 @@ name: Mordenkainen's Faithful Hound
 system: 5e
 level: 4
 school: None
-damage_type: Piercing
+damage_type: Force
 area_of_effect: None
 range: point (30 feet)
 duration: timed (8 hour)

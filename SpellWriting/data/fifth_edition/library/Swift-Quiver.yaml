@@ -4,5 +4,5 @@ level: 5
 school: Transmutation
 damage_type: None
 area_of_effect: None
-range: point (Touch)
+range: point (Self)
 duration: concentration (1 minute)

@@ -5,5 +5,5 @@ school: None
 damage_type: Necrotic
 area_of_effect:
 - S
-range: radius (10 feet)
+range: emanation (10 feet)
 duration: special (Instant)

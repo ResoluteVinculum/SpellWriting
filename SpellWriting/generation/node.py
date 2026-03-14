@@ -1,7 +1,5 @@
 import numpy as np
-
-#---------File for defining spell bases----------#
-# every base must haave an input of n and return (x,y)
+        
 
 def polygon(n,radius = 1,start_angle = None):
     #Creates x,y data for an n-sided polygon
@@ -94,5 +92,6 @@ if __name__ == "__main__":
     members = inspect.getmembers(sys.modules[__name__], inspect.isfunction)[1:]
     import matplotlib.pyplot as plt
     for name, func in members:
+        print(name)
         plt.plot(*func(13), '.', label=name)
     plt.legend()

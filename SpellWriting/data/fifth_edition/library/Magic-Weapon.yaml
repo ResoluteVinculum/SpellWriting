@@ -5,4 +5,4 @@ school: Transmutation
 damage_type: None
 area_of_effect: None
 range: point (Touch)
-duration: concentration (1 hour)
+duration: timed (1 hour)

@@ -5,5 +5,5 @@ school: None
 damage_type: None
 area_of_effect:
 - ST
-range: point (Touch)
+range: point (15 feet)
 duration: special (Instant)

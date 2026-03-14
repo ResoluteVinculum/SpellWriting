@@ -6,10 +6,22 @@ Created on Fri Mar 13 21:46:26 2026
 """
 import typing
 import re
-import yaml
 import sys
-from itertools import product
+from itertools import product, combinations, chain
 
+import yaml
+import numpy as np
+
+def powerset(iterable: typing.Iterable, max_r: int = 3) -> list:
+    """
+    Generates the powerset of sequence
+
+    """
+    sequence = list(iterable)
+    result = chain.from_iterable(combinations(sequence, r)
+                                 for r in range(max_r+1))
+    return list(result)
+    
 
 class SpellAttribute:
     
@@ -123,6 +135,16 @@ class SpellData:
                             lambda t: f'{key} ({str(t)})',
                             value)))
                 options = option_list
+            elif option_type == 'powerset':
+                power_set = powerset(options)
+                if 'None' in options:
+                    options = ['None', *[opt[0] if len(opt) == 1 else opt 
+                                         for opt in power_set
+                                         if 'None' not in opt and opt]]
+                else:
+                    options = power_set
+                
+                
             default = attr_data['default']
             glyph = attr_data.get('glyph', True)
             attr = SpellAttribute(i, options, default=default, glyph=glyph)
@@ -140,7 +162,12 @@ class SpellData:
         if data['system'] != cls.system:
             return None
         return cls(**data)
+    
+    def draw(self, nodes: np.ndarray):
+        attributes = self.collect_attributes()
         
+        
+        return
     
     
     def __repr__(self):

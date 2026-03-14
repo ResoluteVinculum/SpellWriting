@@ -4,5 +4,5 @@ level: 3
 school: Transmutation
 damage_type: None
 area_of_effect: None
-range: radius (30 feet)
+range: emanation (30 feet)
 duration: timed (10 minute)

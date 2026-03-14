@@ -1,7 +1,7 @@
 name: Etherealness
 system: 5e
 level: 7
-school: Transmutation
+school: None
 damage_type: Force
 area_of_effect: None
 range: point (Self)

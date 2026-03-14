@@ -1,9 +1,8 @@
 name: Giant Insect
 system: 5e
 level: 4
-school: Transmutation
+school: None
 damage_type: None
-area_of_effect:
-- MT
-range: point (30 feet)
+area_of_effect: None
+range: point (60 feet)
 duration: concentration (10 minute)

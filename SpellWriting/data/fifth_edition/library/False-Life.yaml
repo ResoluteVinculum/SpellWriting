@@ -5,4 +5,4 @@ school: None
 damage_type: None
 area_of_effect: None
 range: point (Self)
-duration: timed (1 hour)
+duration: special (Instant)

@@ -2,7 +2,8 @@ name: Conjure Animals
 system: 5e
 level: 3
 school: None
-damage_type: None
-area_of_effect: None
+damage_type: Slashing
+area_of_effect:
+- C
 range: point (60 feet)
-duration: concentration (1 hour)
+duration: concentration (10 minute)

@@ -5,5 +5,5 @@ school: Enchantment
 damage_type: None
 area_of_effect:
 - S
-range: point (90 feet)
-duration: timed (1 minute)
+range: point (60 feet)
+duration: concentration (1 minute)

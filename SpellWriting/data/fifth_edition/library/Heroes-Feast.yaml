@@ -4,6 +4,7 @@ level: 6
 school: None
 damage_type: None
 area_of_effect:
+- C
 - MT
-range: point (30 feet)
+range: cube (10 feet)
 duration: special (Instant)

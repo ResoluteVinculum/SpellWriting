@@ -6,4 +6,4 @@ damage_type: None
 area_of_effect:
 - MT
 range: point (30 feet)
-duration: concentration (24 hour)
+duration: timed (24 hour)

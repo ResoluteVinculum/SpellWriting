@@ -5,5 +5,5 @@ school: None
 damage_type: Radiant
 area_of_effect:
 - S
-range: radius (30 feet)
+range: emanation (30 feet)
 duration: concentration (1 minute)

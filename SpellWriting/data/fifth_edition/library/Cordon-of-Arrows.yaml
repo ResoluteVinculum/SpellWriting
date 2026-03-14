@@ -5,5 +5,5 @@ school: Transmutation
 damage_type: Piercing
 area_of_effect:
 - S
-range: point (5 feet)
+range: point (Touch)
 duration: timed (8 hour)

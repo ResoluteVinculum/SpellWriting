@@ -5,4 +5,4 @@ school: Abjuration
 damage_type: None
 area_of_effect: None
 range: point (Self)
-duration: timed (1 round)
+duration: concentration (1 minute)

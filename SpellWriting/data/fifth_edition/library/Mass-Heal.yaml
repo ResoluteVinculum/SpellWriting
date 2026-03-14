@@ -1,7 +1,7 @@
 name: Mass Heal
 system: 5e
 level: 9
-school: None
+school: Abjuration
 damage_type: None
 area_of_effect:
 - MT

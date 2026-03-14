@@ -2,7 +2,8 @@ name: Conjure Celestial
 system: 5e
 level: 7
 school: None
-damage_type: None
-area_of_effect: None
+damage_type: Radiant
+area_of_effect:
+- Y
 range: point (90 feet)
-duration: concentration (1 hour)
+duration: concentration (10 minute)

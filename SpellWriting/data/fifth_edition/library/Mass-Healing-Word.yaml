@@ -1,7 +1,7 @@
 name: Mass Healing Word
 system: 5e
 level: 3
-school: None
+school: Abjuration
 damage_type: None
 area_of_effect:
 - MT

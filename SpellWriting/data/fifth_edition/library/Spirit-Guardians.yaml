@@ -7,5 +7,5 @@ damage_type:
 - Radiant
 area_of_effect:
 - S
-range: radius (15 feet)
+range: emanation (15 feet)
 duration: concentration (10 minute)

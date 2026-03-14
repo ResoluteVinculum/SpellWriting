@@ -5,5 +5,5 @@ school: Illusion
 damage_type: Psychic
 area_of_effect:
 - ST
-range: special (Special)
+range: point (Self)
 duration: timed (8 hour)

@@ -1,7 +1,7 @@
 name: Banishing Smite
 system: 5e
 level: 5
-school: Abjuration
+school: None
 damage_type: Force
 area_of_effect: None
 range: point (Self)

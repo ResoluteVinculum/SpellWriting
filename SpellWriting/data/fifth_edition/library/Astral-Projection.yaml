@@ -6,4 +6,4 @@ damage_type: None
 area_of_effect:
 - MT
 range: point (10 feet)
-duration: special (Special)
+duration: special (Permanent)

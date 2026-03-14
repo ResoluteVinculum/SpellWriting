@@ -5,5 +5,5 @@ school: None
 damage_type: Necrotic
 area_of_effect:
 - ST
-range: point (120 feet)
-duration: timed (1 round)
+range: point (Touch)
+duration: special (Instant)

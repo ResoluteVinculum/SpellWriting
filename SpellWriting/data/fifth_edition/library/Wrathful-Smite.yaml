@@ -2,7 +2,7 @@ name: Wrathful Smite
 system: 5e
 level: 1
 school: None
-damage_type: Psychic
+damage_type: Necrotic
 area_of_effect: None
 range: point (Self)
-duration: concentration (1 minute)
+duration: timed (1 minute)

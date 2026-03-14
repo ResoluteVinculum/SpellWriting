@@ -5,5 +5,5 @@ school: None
 damage_type: None
 area_of_effect:
 - L
-range: line (60 feet)
+range: point (Self)
 duration: concentration (1 minute)

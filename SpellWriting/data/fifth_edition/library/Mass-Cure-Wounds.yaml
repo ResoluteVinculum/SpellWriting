@@ -1,7 +1,7 @@
 name: Mass Cure Wounds
 system: 5e
 level: 5
-school: None
+school: Abjuration
 damage_type: None
 area_of_effect:
 - MT

@@ -5,5 +5,5 @@ school: None
 damage_type: Bludgeoning
 area_of_effect:
 - W
-range: point (Sight)
+range: point (1 miles)
 duration: concentration (6 round)

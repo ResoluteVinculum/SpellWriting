@@ -9,5 +9,5 @@ damage_type:
 area_of_effect:
 - MT
 - S
-range: radius (30 feet)
+range: sphere (30 feet)
 duration: special (Instant)

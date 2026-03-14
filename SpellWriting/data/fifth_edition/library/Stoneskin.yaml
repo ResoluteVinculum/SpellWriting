@@ -1,7 +1,7 @@
 name: Stoneskin
 system: 5e
 level: 4
-school: Abjuration
+school: Transmutation
 damage_type: None
 area_of_effect:
 - ST

@@ -5,4 +5,4 @@ school: None
 damage_type: None
 area_of_effect: None
 range: point (10 feet)
-duration: timed (1 round)
+duration: timed (10 minute)

@@ -6,4 +6,4 @@ damage_type: Lightning
 area_of_effect:
 - S
 range: point (Self)
-duration: concentration (1 minute)
+duration: special (Instant)

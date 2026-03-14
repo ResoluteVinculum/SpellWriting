@@ -4,6 +4,6 @@ level: 3
 school: None
 damage_type: None
 area_of_effect:
-- H
-range: hemisphere (10 feet)
+- S
+range: emanation (10 feet)
 duration: timed (8 hour)

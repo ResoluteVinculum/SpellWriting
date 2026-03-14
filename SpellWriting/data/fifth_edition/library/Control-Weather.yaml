@@ -4,5 +4,5 @@ level: 8
 school: Transmutation
 damage_type: None
 area_of_effect: None
-range: radius (5 miles)
+range: sphere (5 miles)
 duration: concentration (8 hour)
