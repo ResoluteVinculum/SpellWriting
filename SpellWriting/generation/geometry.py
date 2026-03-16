@@ -228,13 +228,18 @@ class Leylines:
         k: getattr(np, k) for k in ["sin", "cos", "tan", "arcsin", "arccos", 
                                     "arctan", "sinh", "cosh", "tanh", "exp", 
                                     "log", "log10", "sqrt", "abs", "fabs",
-                                    "floor", "ceil", "pi", "e"]
+                                    "floor", "ceil", "pi", "e", "mean", "hypot",
+                                    ]
         })
+    
     
     PREDEFINED = MappingProxyType({
         'linear' : ('domain', '0*domain'),
         'centre-circle' : ('cos(pi*domain)', 'sin(pi*domain)'),
-        'non-centre-circle' : ('b + r*cos(theta0 + domain*((theta1-theta0) % (2*pi)))',
+        # The vector representing a shift in midpoint is 
+        # b*np.mean([P,Q],axis=1)/np.hypot(*np.mean([P,Q],axis=1))
+        # TODO
+        'non-centre-circle' : ('r*cos(',
                                'b + r*sin(theta0 + domain*((theta1-theta0) % (2*pi)))'),
         'exponential' : ('domain', 
                          '(exp(10 * domain) - 1) / (exp(10 * domain_max) - 1)'),
@@ -244,9 +249,7 @@ class Leylines:
         })
     PREFEDEFINED_KWARGS = MappingProxyType({
         'non-centre-circle' : {'b' : 0,
-                               'r' : 1,
-                               'theta0' : 0,
-                               'theta1' : 2*np.pi/3}
+                               'r' : 1}
         })
     
     def __init__(self, 
