@@ -167,14 +167,7 @@ class SpellData:
         if data['system'] != cls.system:
             return None
         return cls(**data)
-    
-    def draw(self, nodes: np.ndarray):
-        attributes = self.collect_attributes()
         
-        
-        return
-    
-    
     def __repr__(self):
         arg = [f'{attr_name}={getattr(self, attr_name)}' 
                for attr_name in list(getattr(self, '__dict__', {})) 

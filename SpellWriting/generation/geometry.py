@@ -9,6 +9,7 @@ from types import MappingProxyType
 import typing
 import re
 import copy
+import inspect
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,7 +20,7 @@ SAFE_MATH = MappingProxyType({
                                 "exp", "log", "log10", "sqrt", "abs", "fabs",
                                 "floor", "ceil", "pi", "e", "mean", "hypot",
                                 'array', 'linalg', 'min', 'max', 'linspace',
-                                'arange']
+                                'arange', 'where']
     })
 
 class Founts:
@@ -222,6 +223,68 @@ def generate_necklace(n = 13):
     return np.array(uniques)
 
 
+#functions for drawing lines between points
+def non_centre_circle(P: np.ndarray,
+                      Q: np.ndarray,
+                      b: float = 0.2,
+                      samples:int = 150):
+    """
+    Given a scalar distance b from midpoint of P and Q, define the arc connecting
+    P and Q given the calculated center of the circle
+
+    """
+    #draws a connecting circle between two points with a centre defined by `b` away from the average. Always chooses the small arc.
+    P = np.array(P, dtype=np.float64)
+    Q = np.array(Q, dtype=np.float64)
+    
+    # Calculate new centers
+    midpoint = (P + Q) / 2
+    vector = P - Q
+    mag = np.linalg.norm(vector)
+    unit_vector = vector/mag
+    
+    normal = np.array([unit_vector[1], -unit_vector[0]])
+    
+    C = midpoint + b*normal
+    r = np.linalg.norm(C - P)
+    
+    theta_P = np.arctan2(P[1] - C[1], P[0] - C[0])
+    theta_Q = np.arctan2(Q[1] - C[1], Q[0] - C[0])
+    
+    # CCW sweep
+    ccw_sweep = (theta_Q - theta_P) % (2*np.pi)
+    
+    # Tangent at P for CCW direction
+    v = P - C
+    T_ccw = np.array([-v[1], v[0]])  # +90° rotation
+    T_ccw /= np.linalg.norm(T_ccw)
+    
+    # Vector toward origin
+    O = -P
+    O /= np.linalg.norm(O)
+    
+    # Dot product tells us if CCW heads toward origin
+    dot = np.dot(T_ccw, O)
+    
+    if dot > 0:
+        # CCW heads toward origin → choose CCW arc
+        theta = theta_P + np.linspace(0, ccw_sweep, samples)
+    else:
+        # CW heads toward origin → choose CW arc
+        cw_sweep = ccw_sweep - 2*np.pi
+        theta = theta_P + np.linspace(0, cw_sweep, samples)
+
+    X = r*np.cos(theta) + C[0]
+    Y = r*np.sin(theta) + C[1]
+    # plt.figure()
+    # plt.plot(X,Y)
+    # plt.plot(P, 'o')
+    # plt.plot(Q, 'o')
+    
+    return np.array([X,Y])
+    
+
+
 class Leylines:
     
     __expression_type = None
@@ -236,20 +299,7 @@ class Leylines:
         
         # TODO
         # Normal towards center
-        'non-centre-circle' : ("normal = array((-(Q[1] - P[1]), Q[0] - P[0]));"
-                               "shift = b*normal/linalg.norm([P,Q]);"
-                               "center = mean([P,Q],axis=1) + shift;"
-                               "r = linalg.norm([P, center]);"
-                               "to_P = P - center; to_Q = Q - center;"
-                               "dot = (to_P[0]*to_Q[0]) + (to_P[1]*to_Q[1]);"
-                               "theta0 = arctan2(P[1] - center[1], P[0] - center[0]);"
-                               "theta1 = arctan2(Q[1] - center[1], Q[0] - center[0]);"
-                               "theta_end_ccw = theta1 + 2*pi if theta1 < theta0 else theta1;"
-                               "theta_end_cw = theta1 - 2*pi if theta1 > theta0 else theta1;"
-                               "arc_ccw = r*theta_end_ccw; arc_cw = r*theta_end_cw;"
-                               "ccw_bool = arc_ccw > arc_cw or abs(b) < 1;"
-                               "theta = linspace(theta1, theta_end_ccw, samples) if ccw_bool else linspace(theta0, theta_end_cw, samples);"
-                               "X,Y = r*cos(theta), r*sin(theta)"),
+        'non-centre-circle' : non_centre_circle,
         'exponential' : ('domain', 
                          '(exp(10 * domain) - 1) / (exp(10 * domain_max) - 1)'),
         'inverse-exponential': (
@@ -257,15 +307,14 @@ class Leylines:
             '-(exp(12 * domain) - 1) / (exp(12 * domain_max) - 1)'),
         })
     PREFEDEFINED_KWARGS = MappingProxyType({
-        'non-centre-circle' : {'b' : 0}
         })
     
     def __init__(self, 
                  founts: Founts = Founts(),
-                 expression: str | tuple[str] = ('domain', '0*domain'),
+                 expression: str | tuple[str] | typing.Callable = ('domain', '0*domain'),
                  domain_min: float = 0,
                  domain_max: float = 1,
-                 resolution: int = 20,
+                 resolution: int = 150,
                  **kwargs) -> typing.Self:
         
         n = founts.shape[1]
@@ -288,7 +337,9 @@ class Leylines:
         return self._expression
     
     @expression.setter
-    def expression(self, expression: str | tuple[str]):
+    def expression(self, expression: str | tuple[str] | typing.Callable):
+        
+        
         p_search = lambda s: re.search(r'\bP\b', s)
         q_search = lambda s: re.search(r'\bQ\b', s)
         d_search = lambda s: re.search(r'\bdomain\b', s)
@@ -300,7 +351,14 @@ class Leylines:
             self.kwargs.update(override)
             expression = self.PREDEFINED[expression]
         
-        if isinstance(expression, str):
+        if isinstance(expression, typing.Callable):
+            params = inspect.getargs(expression.__code__)
+            if 'P' in params.args and 'Q' in params.args:
+                self.__expression_type = 'pointwise-callable'
+            elif 'domain' in params.args:
+                self.__expression_type = 'parametric-callable'
+        
+        elif isinstance(expression, str):
             if p_search(expression) and q_search(expression):
                 self.__expression_type = 'pointwise-str' # singular expression
             elif re.search('\bdomain\b', expression):
@@ -318,7 +376,7 @@ class Leylines:
             else:
                 NotImplementedError(f"'{expression=:}' Invalid form for Leylines")
             expression = tuple(expression)
-            
+        
         self._expression = expression
         self.default_curves = self.generate_curves()
         return        
@@ -464,9 +522,11 @@ class Leylines:
                 
                 P = self.founts[:,a] 
                 Q = self.founts[:,b]
+                if all(P == Q):
+                    continue
                 
-                if normal is None: # Pointwise only
-                    env = {'__builtins__': {}, 
+                if normal is None and 'str' in self.__expression_type: # Pointwise only
+                    env = {'__builtins__': __builtins__, 
                             **SAFE_MATH, 
                             'P': P,
                             'Q': Q,
@@ -475,6 +535,13 @@ class Leylines:
                             **self.kwargs}
                     exec(self.expression, env)
                     curve = np.array([env['X'], env['Y']])
+                elif normal is None and 'callable' in self.__expression_type:
+                    # Get expression args
+                    X,Y = self.expression(P,Q, **{
+                        key : value for key, value in self.kwargs.items()
+                        if key in inspect.getargs(self.expression.__code__).args
+                        and key not in ['P','Q']})
+                    curve = np.array([X,Y])
                 else:
                     curve = self._transform_to_segment(normal.copy(), P, Q)
                 
@@ -483,12 +550,19 @@ class Leylines:
     
         return curves
     
-    def preview(self):
+    def preview(self, order: int = None):
         plt.figure()
         cmap = plt.get_cmap('tab20')
-        for order, order_array in enumerate(self.default_curves):
+        if order is None:
+            for order, order_array in enumerate(self.default_curves):
+                for diff, coords in enumerate(order_array):
+                    plt.plot(*coords, color=cmap.colors[order])
+        else:
+            order_array = self.default_curves[order]
             for diff, coords in enumerate(order_array):
                 plt.plot(*coords, color=cmap.colors[order])
         
         plt.plot(*self.founts, 'bo')
         plt.plot(*self.founts[:,0], 'ro')
+        
+

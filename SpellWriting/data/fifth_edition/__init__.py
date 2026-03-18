@@ -100,7 +100,6 @@ def get_spell(cls, spell_name: Literal[*_5eTools_Spell_to_Json],
     if len(aoe_shape) == 1:
         aoe_shape = aoe_shape[0]
     elif len(aoe_shape) > 1:
-        print(name, aoe_shape)
         aoe_shape = tuple(sorted(aoe_shape))
     if not aoe_shape:
         aoe_shape = 'None'

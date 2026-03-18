@@ -9,13 +9,14 @@ import typing
 import matplotlib.pyplot as plt
 
 from SpellWriting.generation import data, geometry
+from SpellWriting.data.fifth_edition import SpellData_5e
 
 
 class Glyph:
     
     def __init__(self,
-                 spelldata: data.SpellData = data.SpellData(),
-                 geometry_override: geometry.Leylines = None) -> typing.Self:
+                 spelldata = None,
+                 geometry_override = None) -> typing.Self:
     
         self.spelldata = spelldata
         if geometry_override:
@@ -51,4 +52,4 @@ class Glyph:
         plt.plot(*self.leylines.founts[:,0], 'ro')
         plt.title(self.spelldata.name)
         if legend:
-            plt.legend5(**legend_kwargs)
+            plt.legend(**legend_kwargs)
